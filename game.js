@@ -10,3 +10,8 @@ var board = {
   8: ' ',
   9: ' '
 };
+
+populateBoard = (position, letter) => {
+  board[position] = letter.toUpperCase();
+}
+
