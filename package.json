@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/pouyaghazvini/ticTacToe-commandLine/issues"
   },
-  "homepage": "https://github.com/pouyaghazvini/ticTacToe-commandLine#readme"
+  "homepage": "https://github.com/pouyaghazvini/ticTacToe-commandLine#readme",
+  "dependencies": {
+    "prompt": "^1.0.0"
+  }
 }

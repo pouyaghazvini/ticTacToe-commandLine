@@ -1,3 +1,5 @@
+var prompt = require('prompt');
+
 var board = {
   1: ' ',
   2: ' ',
@@ -23,32 +25,6 @@ logBoard = () => {
         ' ' + board[7] + ' | ' + board[8] + ' | ' + board[9] + '\n');
 }
 
-assignTurn = (player) => {
-console.log('Turn: ' + player);
-prompt.start();
-prompt.get(['position'], function (err, result) {
-    if (isValid(result.position) === true) {
-        populateBoard(result.position, player);
-        logBoard();
-        if (checkWin(player) === true) {
-            console.log('Winner Winner!');
-            return;
-        }
-        if (checkTie() === true) {
-            console.log('Tie Game');
-            return;
-        }
-        if (player === 'X') {
-            playTurn('O');
-        } else {
-            playTurn('X');
-        }
-    } else {
-        console.log('incorrect input please try again...');
-        playTurn(player);
-    }
-});
-}
 
 const allWinningCombinations = [
   [1, 2, 3], [4, 5, 6], [7, 8, 9], 
@@ -78,3 +54,31 @@ checkForTie = () => {
   return true;
 }
 
+
+
+assignTurn = (player) => {
+  console.log('Turn: ' + player);
+  prompt.start();
+  prompt.get(['position'], function (err, result) {
+    if (isValid(result.position) === true) {
+        populateBoard(result.position, player);
+        logBoard();
+        if (checkForWin(player) === true) {
+            console.log('Winner Winner!');
+            return;
+        }
+        if (checkForTie() === true) {
+            console.log('Tie Game');
+            return;
+        }
+        if (player === 'X') {
+            assignTurn('O');
+        } else {
+            assignTurn('X');
+        }
+    } else {
+        console.log('Input is invalid');
+        assignTurn(player);
+    }
+});
+}
