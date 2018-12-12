@@ -57,7 +57,7 @@ checkForTie = () => {
 checkForWin = (player) => {
   for(let i = 0; i < allWinningCombinations.length; i++) {
     let count = 0;
-    for(j = 0; j < allWinningCombinations[i].length; j+=) {
+    for(j = 0; j < allWinningCombinations[i].length; j++) {
       if(board[allWinningCombinations[i][j]] === player) {
         count++
       }
@@ -77,11 +77,11 @@ assignTurn = (player) => {
         populateBoard(result.position, player);
         logBoard();
         if (checkForWin(player) === true) {
-            console.log('Winner Winner!');
+            console.log(`${player} is the Winner!`);
             return;
         }
         if (checkForTie() === true) {
-            console.log('Tie Game');
+            console.log('Tie Game ... ties are lame');
             return;
         }
         if (player === 'X') {
@@ -103,4 +103,4 @@ console.log('Game started: \n' +
     ' --------- \n' +
     ' 7 | 8 | 9 \n');
 
-playTurn('X');
+assignTurn('X');
