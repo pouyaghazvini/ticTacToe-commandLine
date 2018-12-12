@@ -54,7 +54,20 @@ checkForTie = () => {
   return true;
 }
 
-
+checkForWin = (player) => {
+  for(let i = 0; i < allWinningCombinations.length; i++) {
+    let count = 0;
+    for(j = 0; j < allWinningCombinations[i].length; j+=) {
+      if(board[allWinningCombinations[i][j]] === player) {
+        count++
+      }
+      if(count === 3) {
+        return true;
+      }
+    }
+    return false;
+  }
+}
 
 assignTurn = (player) => {
   console.log('Turn: ' + player);
@@ -80,5 +93,14 @@ assignTurn = (player) => {
         console.log('Input is invalid');
         assignTurn(player);
     }
-});
+  });
 }
+
+console.log('Game started: \n' +
+    ' 1 | 2 | 3 \n' +
+    ' --------- \n' +
+    ' 4 | 5 | 6 \n' +
+    ' --------- \n' +
+    ' 7 | 8 | 9 \n');
+
+playTurn('X');
